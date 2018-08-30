@@ -28,14 +28,17 @@ it to allow or deny lints from the code, eg.:
     #[cfg_attr(feature = "cargo-clippy", allow(needless_lifetimes))]
 "#;
 
+
 #[allow(print_stdout)]
 fn show_help() {
     println!("{}", CARGO_CLIPPY_HELP);
 }
 
+
 #[allow(print_stdout)]
 fn show_version() {
-    println!(env!("CARGO_PKG_VERSION"));
+    let version_info = rustc_tools_util::VersionInfo::new();
+    println!("{}", version_info);
 }
 
 pub fn main() {
@@ -44,6 +47,7 @@ pub fn main() {
         show_help();
         return;
     }
+
     if std::env::args().any(|a| a == "--version" || a == "-V") {
         show_version();
         return;
