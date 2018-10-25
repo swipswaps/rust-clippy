@@ -49,7 +49,6 @@ impl LintPass for Pass {
 }
 
 impl<'a, 'tcx> Pass {
-    #[allow(clippy::similar_names)]
     fn check_binop(
         &self,
         cx: &LateContext<'a, 'tcx>,

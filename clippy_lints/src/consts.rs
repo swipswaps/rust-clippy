@@ -230,7 +230,6 @@ impl<'c, 'cc> ConstEvalLateContext<'c, 'cc> {
         }
     }
 
-    #[allow(clippy::cast_possible_wrap)]
     fn constant_not(&self, o: &Constant, ty: ty::Ty<'_>) -> Option<Constant> {
         use self::Constant::*;
         match *o {
