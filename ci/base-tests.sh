@@ -27,7 +27,7 @@ cd rustc_tools_util && cargo test && cd ..
 
 CLIPPY="`pwd`/target/debug/cargo-clippy clippy"
 # run clippy on its own codebase...
-${CLIPPY} --all-targets --all-features -- -D clippy::all -D clippy::internal
+${CLIPPY} --all-targets --all-features -- -D clippy::all -D clippy::internal -D clippy::pedantic
 # ... and some test directories
 for dir in clippy_workspace_tests clippy_workspace_tests/src clippy_workspace_tests/subcrate clippy_workspace_tests/subcrate/src clippy_dev rustc_tools_util
 do
