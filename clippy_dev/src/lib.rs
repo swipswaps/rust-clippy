@@ -8,7 +8,6 @@
 // except according to those terms.
 
 
-
 #![allow(clippy::default_hash_types)]
 
 use itertools::Itertools;
@@ -73,6 +72,7 @@ impl Lint {
 }
 
 pub fn gen_changelog_lint_list(lints: Vec<Lint>) -> Vec<String> {
+    #[allow(clippy::filter_map)]
     let mut lint_list_sorted: Vec<Lint> = lints;
     lint_list_sorted.sort_by_key(|l| l.name.clone());
     lint_list_sorted
@@ -122,7 +122,6 @@ fn lint_files() -> impl Iterator<Item=walkdir::DirEntry> {
 /// `path` is the relative path to the file on which you want to perform the replacement.
 ///
 /// See `replace_region_in_text` for documentation of the other options.
-#[allow(clippy::expect_fun_call)]
 pub fn replace_region_in_file<F>(path: &str, start: &str, end: &str, replace_start: bool, replacements: F) where F: Fn() -> Vec<String> {
     let mut f = fs::File::open(path).expect(&format!("File not found: {}", path));
     let mut contents = String::new();

@@ -944,7 +944,7 @@ impl<'a, 'tcx> LateLintPass<'a, 'tcx> for Pass {
             if let TyKind::Opaque(def_id, _) = ret_ty.sty {
 
                 // one of the associated types must be Self
-                for predicate in &cx.tcx.predicates_of(def_id).predicates {
+                for predicate in a&cx.tcx.predicates_of(def_id).predicates {
                     match predicate {
                         (Predicate::Projection(poly_projection_predicate), _) => {
                             let binder = poly_projection_predicate.ty();
