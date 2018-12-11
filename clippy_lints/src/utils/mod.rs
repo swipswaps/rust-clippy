@@ -971,7 +971,7 @@ pub fn opt_def_id(def: Def) -> Option<DefId> {
 
 pub fn is_self(slf: &Arg) -> bool {
     if let PatKind::Binding(_, _, name, _) = slf.pat.node {
-        name.name == keywords::SelfLower.name()
+        name.name == keywords::SelfValue.name()
     } else {
         false
     }

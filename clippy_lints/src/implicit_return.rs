@@ -47,8 +47,7 @@ pub struct Pass;
 impl Pass {
     fn expr_match(cx: &LateContext<'_, '_>, expr: &rustc::hir::Expr) {
         match &expr.node {
-            // loops could be using `break` instead of `return`
-            ExprKind::Block(block, ..) | ExprKind::Loop(block, ..) => {
+            ExprKind::Block(block, ..) => {
                 if let Some(expr) = &block.expr {
                     Self::expr_match(cx, expr);
                 }
@@ -84,6 +83,12 @@ impl Pass {
             ExprKind::Match(_, arms, ..) => {
                 for arm in arms {
                     Self::expr_match(cx, &arm.body);
+                }
+            },
+            // loops could be using `break` instead of `return`
+            ExprKind::Loop(block, ..) => {
+                if let Some(expr) = &block.expr {
+                    Self::expr_match(cx, expr);
                 }
             },
             // skip if it already has a return statement
