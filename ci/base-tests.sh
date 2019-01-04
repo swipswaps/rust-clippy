@@ -18,6 +18,8 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
   remark -f *.md > /dev/null
 fi
 # build clippy in debug mode and run tests
+cargo build --features debugging --release
+cargo test --features debugging --release
 cargo build --features debugging
 cargo test --features debugging
 # for faster build, share target dir between subcrates
