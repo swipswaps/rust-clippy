@@ -29,6 +29,8 @@ fn main() {
     write!(&mut v, "Hello {} {}\n\n", "world", "#2");
     writeln!(&mut v, "\ndon't\nwarn\nfor\nmultiple\nnewlines\n"); // #3126
     writeln!(&mut v, "\nbla\n\n"); // #3126
+    write!(&mut v, "\r\n"); // 4208
+    write!(&mut v, "foobar\r\n"); // 4208
 
     // Escaping
     write!(&mut v, "\\n"); // #3514
@@ -49,4 +51,5 @@ fn main() {
         r"
 "
     );
+
 }
