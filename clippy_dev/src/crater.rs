@@ -1,3 +1,5 @@
+#![allow(clippy::filter_map)]
+
 use std::path::PathBuf;
 use std::process::Command;
 
