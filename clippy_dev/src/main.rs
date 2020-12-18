@@ -52,7 +52,6 @@ fn get_clap_config<'a>() -> ArgMatches<'a> {
     App::new("Clippy developer tooling")
         .subcommand(SubCommand::with_name("bless").about("bless the test output changes"))
         .subcommand(SubCommand::with_name("crater").about("run clippy on a set of crates and check output"))
-
         .subcommand(
             SubCommand::with_name("fmt")
                 .about("Run rustfmt on all projects and tests")
